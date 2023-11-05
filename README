@@ -1,0 +1,40 @@
+TEMA 2 AA - IMBREA GIULIA-STEFANIA 321CB
+
+Graph.java
+
+OBS: pt fiecare literal creat, verific daca acesta exista in var_used, daca nu, il adaug
+	 la final ma voi folosi de dimensiunea lui var_used pt a stie cate varianile din cele k*n au fost folosite
+
+ArrayList<List<Integer>> cond1(Graph g)
+- e pt prima conditie din tema: ne asiguram ca exista un al i-elea nod în clica folosind clauze de forma V Xiv (i pt clica, v pt graf initial)
+- returneaza o lista de liste
+- returneaza o lista de clauze, unde clauzele sunt liste de literali
+- (in capul meu) pe coloana x se afla literalii ce fap parte din clauza x
+- construiesc literalii cu 2 for-uri, unul pt i(clica) si unul pt v(graf initial)
+- folosesc maparea (Xij) = (i-1)*v + j, unde v = nr de noduri din graf initial
+
+ArrayList<List<Integer>> cond2(Graph g)
+- e pt a doua conditie din tema: unicitatea elementelor din clica
+- return : ca la cond1
+- clauze de forma: !Xiv ^ !Xjv
+- folosesc 3 for uri pt i j v, construiesc cei doi literali + verificare in var_used
+
+ArrayList<List<Integer>> cond3(Graph g)
+- e pt a treia conditie din tema:  oricare doua noduri din clica sa aiba muchie între ele
+- return : ca la cond1
+- clauze de forma: !Xiv ^ !Xju
+- folosesc 4 for uri pt i j v u, verific daca  i!=j si daca nu exista muchie intre nodurile u si v din clica
+- conditiile sunt respectate = > construiesc literalul
+
+
+
+Main.java
+
+Graph read(String input)
+- citeste din fisierul din input si returneaza un obiect de tip Graph
+
+void print(String path, ArrayList<List<Integer>> cond)
+- primeste ca parametri fisierul de output si lista cu clauze mentionata mai sus
+- realizeaza scrierea in fisier dupa cerinta, accesand elementele din lista
+
+Conform raspunsurilor de pe forum am realizat un script(main.sh) si makefile
